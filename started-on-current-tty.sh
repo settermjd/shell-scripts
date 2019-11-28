@@ -19,7 +19,13 @@ function usage()
 }
 
 # Check that at least one argument has been provided
-[ $# != 1 ] && ( usage && exit -1 ) || process=$1;
+if [ $# != 1 ]; then
+    usage 
+    exit -1 
+fi
+
+# Get the name of the desired process
+process=$1;
 
 # Get the current tty
 current_tty=$(tty)
